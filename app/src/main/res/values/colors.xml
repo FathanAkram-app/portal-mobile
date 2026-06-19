@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cyber Command palette — mirrors desktop Portal Center (portal.css) -->
+    <color name="primary">#00DAF3</color>
+    <color name="primary_dim">#3300DAF3</color>
+    <color name="primary_10">#1A00DAF3</color>
+    <color name="primary_20">#3300DAF3</color>
+
+    <color name="surface">#071518</color>
+    <color name="surface_container">#142225</color>
+    <color name="surface_container_low">#101E21</color>
+    <color name="surface_container_lowest">#031013</color>
+    <color name="surface_container_high">#1E2C2F</color>
+
+    <color name="on_surface">#D6E5E9</color>
+    <color name="on_surface_variant">#BAC9CC</color>
+    <color name="on_surface_variant_60">#99BAC9CC</color>
+    <color name="outline_variant">#3B494C</color>
+    <color name="outline_variant_30">#4D3B494C</color>
+
+    <color name="online">#00E676</color>
+    <color name="offline">#FF1744</color>
+    <color name="warning">#FFAB00</color>
+
+    <!-- Outer glow halos for status dots (low-alpha) -->
+    <color name="online_glow">#5500E676</color>
+    <color name="offline_glow">#55FF1744</color>
+    <color name="warning_glow">#55FFAB00</color>
+
+    <color name="logo_red">#DC2626</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

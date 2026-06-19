@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Glowing underline indicator. Drawn in white so TabLayout's tabIndicatorColor
+     tints it to cyan (SRC_IN preserves the alpha gradient → soft glow bloom above a
+     bright 3dp line, mirroring the desktop ::after box-shadow underline). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Glow bloom -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="90"
+                android:startColor="#66FFFFFF"
+                android:endColor="@android:color/transparent" />
+        </shape>
+    </item>
+    <!-- Bright line -->
+    <item android:gravity="bottom" android:height="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFFFF" />
+        </shape>
+    </item>
+</layer-list>

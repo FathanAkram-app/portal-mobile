@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Portal Mobile</string>
+    <string name="org_name">Markas Besar</string>
+    <string name="org_sub">Command Center</string>
+    <string name="logo_text">PORTAL</string>
+
+    <string name="tab_vcomm">VCOMM</string>
+    <string name="tab_bms">BMS</string>
+    <string name="tab_blm">BLM</string>
+
+    <string name="all_regions">Semua Wilayah</string>
+    <string name="no_region">Tanpa Wilayah</string>
+    <string name="loading">Mengambil data dari server…</string>
+    <string name="empty_title">Belum Ada Data</string>
+    <string name="empty_desc">Tidak ada pos pada wilayah ini.</string>
+    <string name="settings">Pengaturan</string>
+
+    <!-- Settings dialog -->
+    <string name="cfg_api_base">API Base URL</string>
+    <string name="cfg_pkg_vcomm">Paket APK VCOMM</string>
+    <string name="cfg_pkg_bms">Paket APK BMS</string>
+    <string name="cfg_pkg_blm">Paket APK BLM</string>
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+</resources>

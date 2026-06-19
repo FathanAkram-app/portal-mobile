@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Command header — mirrors the desktop .header-top: skewed logo mark, PORTAL
+     wordmark, right-aligned org block + gold emblem, and a hairline divider.
+     Transparent so the radar glow shows through. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="12dp">
+
+        <!-- Logo mark -->
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_logo_bars"
+            android:contentDescription="@string/logo_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logo_text"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            android:textStyle="italic"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.2" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Org block -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_marginEnd="12dp">
+
+            <TextView
+                android:id="@+id/orgName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/org_name"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05" />
+
+            <TextView
+                android:id="@+id/orgSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/org_sub"
+                android:textColor="@color/on_surface_variant"
+                android:textSize="9sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.15" />
+        </LinearLayout>
+
+        <!-- Gold emblem -->
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_org_triangle"
+            android:contentDescription="@string/org_name" />
+
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_settings"
+            android:contentDescription="@string/settings" />
+    </LinearLayout>
+
+    <!-- Hairline divider (desktop .header-tabs-line) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/outline_variant_30" />
+
+</LinearLayout>

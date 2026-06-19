@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Three skewed red bars — the desktop .logo-bar (skewX(-20deg)) wordmark mark -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="18dp"
+    android:viewportWidth="28"
+    android:viewportHeight="18">
+    <path android:fillColor="@color/logo_red" android:pathData="M5,1 L11,1 L6,17 L0,17 Z" />
+    <path android:fillColor="@color/logo_red" android:pathData="M13,1 L19,1 L14,17 L8,17 Z" />
+    <path android:fillColor="@color/logo_red" android:pathData="M21,1 L27,1 L22,17 L16,17 Z" />
+</vector>

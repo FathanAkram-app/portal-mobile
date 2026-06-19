@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/regionChip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_region_chip"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="8dp"
+    android:gravity="center_vertical"
+    android:maxLines="1"
+    android:ellipsize="end"
+    android:textColor="@color/on_surface_variant"
+    android:textSize="13sp"
+    android:textStyle="bold"
+    android:duplicateParentState="true"
+    tools:text="Papua  3" />
