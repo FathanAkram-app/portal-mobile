@@ -14,6 +14,8 @@
     <string name="empty_title">Belum Ada Data</string>
     <string name="empty_desc">Tidak ada pos pada wilayah ini.</string>
     <string name="settings">Pengaturan</string>
+    <string name="search_sites_hint">Cari site (nama / kode)…</string>
+    <string name="empty_search_desc">Tidak ada site yang cocok dengan pencarian.</string>
 
     <!-- Settings dialog -->
     <string name="cfg_api_base">API Base URL</string>
@@ -22,4 +24,71 @@
     <string name="cfg_pkg_blm">Paket APK BLM</string>
     <string name="save">Simpan</string>
     <string name="cancel">Batal</string>
+
+    <!-- Region dialog -->
+    <string name="add_region">Tambah Wilayah</string>
+    <string name="create_region_title">Tambah Wilayah</string>
+    <string name="edit_region_title">Edit Wilayah</string>
+    <string name="cr_code">Kode Wilayah *</string>
+    <string name="cr_code_hint">PAPUA</string>
+    <string name="cr_name">Nama Wilayah *</string>
+    <string name="cr_name_hint">Papua</string>
+    <string name="cr_desc">Deskripsi</string>
+    <string name="cr_create">Buat Wilayah</string>
+    <string name="cr_save">Simpan Perubahan</string>
+    <string name="cr_required">Kode dan Nama Wilayah wajib diisi</string>
+    <string name="cr_creating">Membuat wilayah…</string>
+    <string name="cr_saving">Menyimpan perubahan…</string>
+    <string name="cr_success">Wilayah berhasil dibuat</string>
+    <string name="cr_updated">Wilayah berhasil diperbarui</string>
+    <string name="del_region_title">Hapus Wilayah</string>
+    <string name="del_region_msg">Hapus wilayah \"%1$s\"? Site yang terhubung akan dilepas dari wilayah ini.</string>
+    <string name="del_region_deleting">Menghapus wilayah…</string>
+    <string name="del_region_success">Wilayah berhasil dihapus</string>
+
+    <!-- Create site dialog -->
+    <string name="add_site">Tambah Site</string>
+    <string name="create_site_title">Tambah Site Baru</string>
+    <string name="cs_code">Site Code *</string>
+    <string name="cs_code_hint">SITE-XX</string>
+    <string name="cs_name">Nama Site *</string>
+    <string name="cs_blockip">Block IP *</string>
+    <string name="cs_blockip_hint">172.27.2.192/27</string>
+    <string name="cs_desc">Deskripsi</string>
+    <string name="cs_region">Wilayah</string>
+    <string name="cs_no_region">— Tanpa Wilayah —</string>
+    <string name="cs_create">Buat Site</string>
+    <string name="cs_required">Site Code, Nama, dan Block IP wajib diisi</string>
+    <string name="cs_creating">Membuat site…</string>
+    <string name="cs_success">Site berhasil dibuat</string>
+
+    <!-- Edit / delete site -->
+    <string name="edit_site_title">Edit Site</string>
+    <string name="cs_save">Simpan Perubahan</string>
+    <string name="cs_saving">Menyimpan perubahan…</string>
+    <string name="cs_updated">Site berhasil diperbarui</string>
+    <string name="site_actions">Aksi Site</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Hapus</string>
+    <string name="del_site_title">Hapus Site</string>
+    <string name="del_site_msg">Hapus site \"%1$s\" (%2$s)? Semua data IP terkait akan dihapus.</string>
+    <string name="del_site_deleting">Menghapus site…</string>
+    <string name="del_site_success">Site berhasil dihapus</string>
+
+    <!-- App IP allocation (Alokasi IP Aplikasi) -->
+    <string name="cs_ip_section">Alokasi IP Aplikasi</string>
+    <string name="cs_ip_eyesee">Eyesee</string>
+    <string name="cs_ip_bms">BMS</string>
+    <string name="cs_ip_blm">BLM</string>
+    <string name="cs_ip_vcom">VCOM</string>
+    <string name="cs_ip_hint">IP Address (e.g. 172.27.3.11)</string>
+    <string name="cs_port_hint">Port</string>
+
+    <!-- Site image picker -->
+    <string name="cs_image">Gambar Site</string>
+    <string name="cs_image_pick">Pilih Gambar…</string>
+    <string name="cs_image_none">Belum ada gambar</string>
+    <string name="cs_image_current">Gambar saat ini terpasang — pilih untuk mengganti</string>
+    <string name="cs_image_selected">%1$s (%2$d KB)</string>
+    <string name="cs_image_error">Gagal membaca gambar</string>
 </resources>

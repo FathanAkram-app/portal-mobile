@@ -1,0 +1,11 @@
+<!-- "Add location" marker with a plus — used for the Add Region action. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@color/on_surface_variant">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M12,2c-4.2,0 -8,3.22 -8,8.2 0,3.32 2.67,7.25 8,11.8 5.33,-4.55 8,-8.48 8,-11.8C20,5.22 16.2,2 12,2zM13,13h-2v-3H8V8h3V5h2v3h3v2h-3V13z" />
+</vector>

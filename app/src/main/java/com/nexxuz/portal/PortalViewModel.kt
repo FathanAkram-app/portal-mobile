@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexxuz.portal.data.ApiClient
+import com.nexxuz.portal.data.ImageUpload
 import com.nexxuz.portal.data.Region
 import com.nexxuz.portal.data.Site
+import com.nexxuz.portal.data.SiteIpInput
 import com.nexxuz.portal.data.StatusChecker
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
@@ -29,6 +31,8 @@ class PortalViewModel : ViewModel() {
 
     /** Selected region code, "ALL", or "NONE". */
     var selectedRegion: String = "ALL"
+    /** Free-text site search (matches site name or code); empty = no filter. */
+    var searchQuery: String = ""
     /** Index into AppConfig.APPS (VCOMM/BMS/BLM). */
     var selectedAppIndex: Int = 0
 
@@ -74,6 +78,145 @@ class PortalViewModel : ViewModel() {
             } catch (e: Exception) {
                 errorMessage.value = e.message ?: "Network error"
                 phase.value = Phase.ERROR
+            }
+        }
+    }
+
+    /**
+     * Create a new site, then reload the list on success. [onResult] is invoked on
+     * the main thread with (success, errorMessage) so the caller can toast/close.
+     */
+    fun createSite(
+        apiBaseUrl: String,
+        siteCode: String,
+        siteName: String,
+        blockIp: String,
+        description: String?,
+        regionId: Int?,
+        ips: List<SiteIpInput>,
+        image: ImageUpload?,
+        onResult: (Boolean, String?) -> Unit
+    ) {
+        val api = ApiClient(apiBaseUrl)
+        viewModelScope.launch {
+            try {
+                if (image != null) {
+                    api.createSiteWithImage(siteCode, siteName, blockIp, description, regionId, ips, image)
+                } else {
+                    api.createSite(siteCode, siteName, blockIp, description, regionId, ips)
+                }
+                onResult(true, null)
+                reload(apiBaseUrl)
+            } catch (e: Exception) {
+                onResult(false, e.message ?: "Network error")
+            }
+        }
+    }
+
+    /**
+     * Update an existing site, then reload the list on success. [onResult] runs on
+     * the main thread with (success, errorMessage).
+     */
+    fun updateSite(
+        apiBaseUrl: String,
+        siteCode: String,
+        siteName: String,
+        blockIp: String,
+        description: String?,
+        regionId: Int?,
+        ips: List<SiteIpInput>,
+        image: ImageUpload?,
+        onResult: (Boolean, String?) -> Unit
+    ) {
+        val api = ApiClient(apiBaseUrl)
+        viewModelScope.launch {
+            try {
+                api.updateSite(siteCode, siteName, blockIp, description, regionId, ips)
+                // Image goes up as a separate multipart PUT (the API keeps other fields).
+                if (image != null) api.uploadSiteImage(siteCode, image)
+                onResult(true, null)
+                reload(apiBaseUrl)
+            } catch (e: Exception) {
+                onResult(false, e.message ?: "Network error")
+            }
+        }
+    }
+
+    /** Create a region, then reload on success. [onResult] runs on the main thread. */
+    fun createRegion(
+        apiBaseUrl: String,
+        regionCode: String,
+        regionName: String,
+        description: String?,
+        onResult: (Boolean, String?) -> Unit
+    ) {
+        val api = ApiClient(apiBaseUrl)
+        viewModelScope.launch {
+            try {
+                api.createRegion(regionCode, regionName, description)
+                onResult(true, null)
+                reload(apiBaseUrl)
+            } catch (e: Exception) {
+                onResult(false, e.message ?: "Network error")
+            }
+        }
+    }
+
+    /** Update an existing region, then reload on success. */
+    fun updateRegion(
+        apiBaseUrl: String,
+        regionCode: String,
+        regionName: String,
+        description: String?,
+        onResult: (Boolean, String?) -> Unit
+    ) {
+        val api = ApiClient(apiBaseUrl)
+        viewModelScope.launch {
+            try {
+                api.updateRegion(regionCode, regionName, description)
+                onResult(true, null)
+                reload(apiBaseUrl)
+            } catch (e: Exception) {
+                onResult(false, e.message ?: "Network error")
+            }
+        }
+    }
+
+    /** Delete a region by code, then reload on success. */
+    fun deleteRegion(
+        apiBaseUrl: String,
+        regionCode: String,
+        onResult: (Boolean, String?) -> Unit
+    ) {
+        val api = ApiClient(apiBaseUrl)
+        viewModelScope.launch {
+            try {
+                api.deleteRegion(regionCode)
+                // If the deleted region was selected, fall back to ALL so the grid
+                // doesn't filter on a code that no longer exists.
+                if (selectedRegion == regionCode) selectedRegion = "ALL"
+                onResult(true, null)
+                reload(apiBaseUrl)
+            } catch (e: Exception) {
+                onResult(false, e.message ?: "Network error")
+            }
+        }
+    }
+
+    /** Delete a site by code, then reload the list on success. */
+    fun deleteSite(
+        apiBaseUrl: String,
+        siteCode: String,
+        onResult: (Boolean, String?) -> Unit
+    ) {
+        val api = ApiClient(apiBaseUrl)
+        viewModelScope.launch {
+            try {
+                api.deleteSite(siteCode)
+                onResult(true, null)
+                reload(apiBaseUrl)
+            } catch (e: Exception) {
+                onResult(false, e.message ?: "Network error")
             }
         }
     }
@@ -132,6 +275,16 @@ class PortalViewModel : ViewModel() {
             "ALL" -> all
             "NONE" -> all.filter { it.regionCode == null }
             else -> all.filter { it.regionCode == selectedRegion }
+        }
+    }
+
+    /** Sites shown in the grid: region filter, then the free-text search (name or code). */
+    fun visibleSites(): List<Site> {
+        val byRegion = sitesForSelectedRegion()
+        val q = searchQuery.trim().lowercase()
+        if (q.isEmpty()) return byRegion
+        return byRegion.filter {
+            it.siteName.lowercase().contains(q) || it.siteCode.lowercase().contains(q)
         }
     }
 

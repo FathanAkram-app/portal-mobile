@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded dark panel for AlertDialog windows — matches the cyber-command surface
+     with a faint cyan outline (cf. bg_site_thumb). Insets give the usual dialog margin. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="20dp"
+    android:insetRight="20dp"
+    android:insetTop="24dp"
+    android:insetBottom="24dp">
+    <shape android:shape="rectangle">
+        <solid android:color="@color/surface_container" />
+        <corners android:radius="16dp" />
+        <stroke android:width="1dp" android:color="@color/primary_20" />
+    </shape>
+</inset>

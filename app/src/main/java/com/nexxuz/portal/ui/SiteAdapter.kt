@@ -14,7 +14,8 @@ import com.nexxuz.portal.data.Site
 import com.nexxuz.portal.util.ImageLoader
 
 class SiteAdapter(
-    private val onClick: (Site) -> Unit
+    private val onClick: (Site) -> Unit,
+    private val onLongClick: (Site) -> Unit
 ) : RecyclerView.Adapter<SiteAdapter.VH>() {
 
     private var items: List<Site> = emptyList()
@@ -90,6 +91,7 @@ class SiteAdapter(
 
         holder.itemView.alpha = if (online == false) 0.45f else 1f
         holder.itemView.setOnClickListener { onClick(site) }
+        holder.itemView.setOnLongClickListener { onLongClick(site); true }
     }
 
     private fun dp(ctx: android.content.Context, value: Int): Int =

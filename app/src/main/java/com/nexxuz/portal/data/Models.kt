@@ -7,6 +7,18 @@ data class AppIp(
     val port: Int
 )
 
+/**
+ * One per-app IP allocation as entered in the create/edit-site form ("Alokasi IP
+ * Aplikasi"). Mirrors the desktop portal's payload entries: an [appKey]
+ * (eyesee/bms/blm/vcom), the [ipAddress], and an optional [port] (null when left
+ * blank). Sent as the `ips` array on create/update.
+ */
+data class SiteIpInput(
+    val appKey: String,
+    val ipAddress: String,
+    val port: Int?
+)
+
 /** A site / "Pos". */
 data class Site(
     val siteCode: String,

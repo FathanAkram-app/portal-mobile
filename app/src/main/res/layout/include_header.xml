@@ -71,13 +71,31 @@
                 android:letterSpacing="0.15" />
         </LinearLayout>
 
-        <!-- Gold emblem -->
+        <!-- Org emblem — backend logo (loaded at runtime), falls back to the gold triangle -->
         <ImageView
+            android:id="@+id/orgEmblem"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_marginEnd="6dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_org_triangle"
             android:contentDescription="@string/org_name" />
+
+        <ImageButton
+            android:id="@+id/btnAddRegion"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add_region"
+            android:contentDescription="@string/add_region" />
+
+        <ImageButton
+            android:id="@+id/btnAddSite"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/add_site" />
 
         <ImageButton
             android:id="@+id/btnSettings"

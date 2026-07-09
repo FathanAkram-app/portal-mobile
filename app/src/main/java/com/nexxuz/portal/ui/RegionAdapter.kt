@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nexxuz.portal.R
 
 class RegionAdapter(
-    private val onClick: (String) -> Unit
+    private val onClick: (String) -> Unit,
+    private val onLongClick: (String) -> Unit = {}
 ) : RecyclerView.Adapter<RegionAdapter.VH>() {
 
     /** code = "ALL" / "NONE" / regionCode */
@@ -45,6 +46,7 @@ class RegionAdapter(
         val color = if (selected) R.color.primary else R.color.on_surface_variant
         holder.chip.setTextColor(ContextCompat.getColor(holder.chip.context, color))
         holder.chip.setOnClickListener { onClick(e.code) }
+        holder.chip.setOnLongClickListener { onLongClick(e.code); true }
     }
 
     class VH(val chip: TextView) : RecyclerView.ViewHolder(chip)
